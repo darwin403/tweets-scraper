@@ -36,6 +36,7 @@ def fetch_users(page):
         return users
 
     except Exception as e:
+        print ('Error while fetching users for "%s":' % USER_CONTAINS, e)
         return []
 
 
