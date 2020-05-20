@@ -48,7 +48,7 @@ greenlet==0.4.12
 html2markdown==0.1.6.post0
 html2text==2018.1.9
 html5lib==0.999999999
-httplib2==0.11.3
+httplib2==0.18.0
 hyperlink==19.0.0
 idna==2.9
 idna-ssl==1.1.0
