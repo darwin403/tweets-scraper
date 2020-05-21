@@ -7,6 +7,11 @@ from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
+# file locations
+PROJECT_LOC = (os.path.dirname(os.path.realpath(__file__)))
+TWEETS_LOC = os.path.join(PROJECT_LOC, 'tweets')
+USERS_LOC = os.path.join(PROJECT_LOC, 'users.csv')
+
 # twitter access tokens
 API_KEY = "4PzLI2Fp1TsuQ5z9yRpTdRVSD"
 API_SECRET_KEY = "cSR3RFKgVKTFjfktko61oegw0h7bRkgceR9mbdbC4PLevYoSzZ"
@@ -52,13 +57,12 @@ with PoolExecutor(max_workers=20) as executor:
 if not users:
     sys.exit('No users found for "%s"' % USER_CONTAINS)
 
-
 # create tweets folder to save tweets
-if not os.path.exists('tweets'):
-    os.makedirs('tweets')
+if not os.path.exists(TWEETS_LOC):
+    os.makedirs(TWEETS_LOC)
 
 # create data file containing all users
-with open("users.csv", "w+", encoding="utf-8") as f:
+with open(USERS_LOC, "w+", encoding="utf-8") as f:
     doc = csv.writer(f, delimiter=",", quotechar='"',
                      quoting=csv.QUOTE_ALL)
     doc.writerow([
@@ -68,16 +72,16 @@ with open("users.csv", "w+", encoding="utf-8") as f:
     # iterate over each user and scrape the data
     for user in users:
 
-        # write the user to users.csv
+        # write the user to users file
         doc.writerow([
-            user.id, user.screen_name, user.name, user.description, user.location, user.followers_count, user.following, user.created_at, user.url, "tweets/%s.csv" % user.screen_name
+            user.id, user.screen_name, user.name, user.description, user.location, user.followers_count, user.following, user.created_at, user.url, os.path.join(TWEETS_LOC,"%s.csv" % user.screen_name)
         ])
 
 
 # create tweets
 for user in users:
     # assign location for tweets of a user
-    tweets_file = "tweets/%s.csv" % user.screen_name
+    tweets_file = os.path.join(TWEETS_LOC,"%s.csv" % user.screen_name)
 
     # delete tweets file if already exists
     if os.path.exists(tweets_file):
