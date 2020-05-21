@@ -83,13 +83,16 @@ for user in users:
     if os.path.exists(tweets_file):
         os.remove(tweets_file)
 
-    # describe twint configuration
-    c = twint.Config()
-    c.Username = user.screen_name
-    c.Since = (date.today() + relativedelta(days=-TWEETS_SINCE)  # tweets since 2 days
-               ).strftime('%Y-%m-%d %H:%M:%S')
-    c.Output = tweets_file
-    c.Store_csv = True
+    try:
+        # describe twint configuration
+        c = twint.Config()
+        c.Username = user.screen_name
+        c.Since = (date.today() + relativedelta(days=-TWEETS_SINCE)  # tweets since 2 days
+                ).strftime('%Y-%m-%d %H:%M:%S')
+        c.Output = tweets_file
+        c.Store_csv = True
 
-    # scrape the user tweets
-    twint.run.Search(c)
+        # scrape the user tweets
+        twint.run.Search(c)
+    except Exception as e:
+        print ('Twint Error captured:',e)
