@@ -94,7 +94,7 @@ pluggy==0.6.0
 Protego==0.1.16
 protobuf==3.0.0
 proxybroker==0.3.1
-py==1.5.2
+py==1.10.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycairo==1.16.2
