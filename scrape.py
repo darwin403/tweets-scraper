@@ -20,7 +20,7 @@ ACCESS_TOKEN = "1260346234503442432-oa1u8VmcQ8KscXyeVnZpONHr9Nh1ex"
 ACCESS_TOKEN_SECRET = "l7JngSBFwGLoJ6PzRAAZ7nkOiduxij9ygv5Eg2kxRMK7v"
 
 # keyword to search for in user
-USER_CONTAINS = "modi"
+USER_CONTAINS = "LetsDvL"
 
 # max number pages to paginate. twitter api provides 20 usernames per page.
 MAX_PAGES = 2
