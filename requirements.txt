@@ -137,7 +137,7 @@ schedule==0.6.0
 scour==0.36
 Scrapy==2.0.1
 scrapy-fake-useragent==1.2.0
-scrapy-splash==0.7.2
+scrapy-splash==0.8.0
 SecretStorage==2.3.1
 selenium==3.141.0
 service-identity==18.1.0
